@@ -10,6 +10,10 @@
     "description": {
       "type": "string",
       "description": "The description of the tag"
+    },
+    "ItemPickerContainer": {
+      "type": "boolean",
+      "description": "Indicates whenever this property is handled as an ItemPickerContainer in the Java"
     }
   }
 }

@@ -1,5 +1,5 @@
 {
     "yaml.schemas": {
-        "schemas/tags.json": "data/procedural_distributions/tags.yaml"
+        "schemas/properties.json": "data/procedural_distributions/tags.yaml"
     }
 }

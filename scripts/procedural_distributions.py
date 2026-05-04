@@ -1,12 +1,15 @@
-import json
+import json, yaml
 from pathlib import Path
-from lupa import LuaRuntime
 
 from execute_lua import run_files
 
 
 LUA_DIR = Path("/home/simon/.steam/debian-installation/steamapps/common/ProjectZomboid/projectzomboid/media/lua")
 OUT = Path("out/procedural_distributions.json")
+
+PROPERTIES_DATA = Path("data/procedural_distributions/properties.yaml")
+with open(PROPERTIES_DATA) as f:
+    PROPERTIES = yaml.safe_load(f)
 
 
 
@@ -62,25 +65,25 @@ def parse_odd_pair(items):
         d.append((item, chance))
     return d
 
+def parse_item_picker_container(data):
+    o = {}
+    for property in PROPERTIES:
+        property_name = property["name"]
+        if property_name in data:
+            # should handle as an ItemPickerContainer ?
+            if "ItemPickerContainer" in property and property["ItemPickerContainer"]:
+                o[property_name] = parse_item_picker_container(data[property_name])
+            elif property_name == "items":
+                o[property_name] = parse_odd_pair(data[property_name])
+            else:
+                o[property_name] = data[property_name]
+    return o
+
 # convert to a regular dict for JSON serialization
 def parse_procedural_distributions(lua_table):
     out = {}
     for procedural_distribution, data in lua_table.items():
-        out_data = {
-            "rolls": data["rolls"],
-        }
-
-        out_data["items"] = parse_odd_pair(data["items"])
-        
-        out_junk = {}
-        junk = data["junk"]
-        if junk is not None:
-            out_junk["items"] = parse_odd_pair(junk["items"])
-            out_junk["rolls"] = junk["rolls"]
-
-        out_data["junk"] = out_junk
-
-        out[procedural_distribution] = out_data
+        out[procedural_distribution] = parse_item_picker_container(data)
 
     return out
 

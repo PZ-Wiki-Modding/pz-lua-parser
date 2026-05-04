@@ -32,7 +32,6 @@
   description: Non-rotten items will be rotten (75% chance) or have increased age (less fresh).
 - name: onlyOne
   description: Deprecated, a tag which can be found in distributions looks deprecated from the Java.
-- name: bags
 - name: isShop
   description: |-
     When not set to true:
@@ -42,3 +41,22 @@
     - Items with head conditio nget reduced head condition (40% chance)
     - Items with sharpness condition get reduced sharpness condition (40% chance)
     - Bags get items inside them
+- name: bags
+  description: Unclear what this does.
+  ItemPickerContainer: true
+- name: junk
+  ItemPickerContainer: true
+- name: items
+  description: |-
+    Holds the various items that will spawn in this procedural distribution list. The format should be as follow:
+    ```lua
+    items = {
+      "item1", roll_chance1,
+      "item2", roll_chance2,
+      "item3", roll_chance3,
+      ...
+    }
+    ```
+- name: rolls
+  description: |-
+    Number of rolls to perform on the procedural distribution list. This roll amount is applied for each item entries of this procedural distribution list. So if there are 5 items and 2 rolls, the game will roll 2 times for each of the 5 items individually, so 10 rolls in total.
