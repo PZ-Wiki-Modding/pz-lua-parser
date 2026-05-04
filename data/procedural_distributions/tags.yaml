@@ -1,0 +1,44 @@
+- name: noAutoAge
+- name: fillRand
+- name: maxMap
+  description: Integer value, limits the same item to a max amount (UNSURE).
+- name: stashchance
+  description: Chance for the container to be a stash.
+- name: dontSpawnAmmo
+- name: gunStorage
+- name: ignoreZombieDensity
+  description: Ignores the zombie density impact on item spawn chance.
+- name: cookFood
+- name: canBurn
+  description: Food cna be burnt (25% chance) or cooked.
+- name: isTrash
+  description: |-
+    items spawn with lower condition, delta etc:
+    - HandWeapon get reduced item condition
+    - Items with head condition get reduced head condition
+    - Items with sharpness condition get reduced head condition
+    - DrainiableComboItem get reduced item uses (i.e. batteries)
+    - Impact on non-canned and edible (non can't eat) food:
+      - Non-vermin, cookable and non-replacable on cooked will be either cooked or burnt (50% chance)
+      - Non-rotten item will be rotten (75% chance) or have increased age (less fresh)
+      - Have reduced food values
+
+    `isWorn` containers will have clothing items with reduced condition, can be dirty (25% chance), bloody (1% chance) and/or have holes (25% chance).
+
+    `isTrash` containers will have clothing items with reduced condition, can be wet (25% chance), dirty (95% chance), bloody (10% chance) and /or have holes (75% chance). 
+- name: isWorn
+  "#desc": "isTrash"
+- name: isRotten
+  description: Non-rotten items will be rotten (75% chance) or have increased age (less fresh).
+- name: onlyOne
+  description: Deprecated, a tag which can be found in distributions looks deprecated from the Java.
+- name: bags
+- name: isShop
+  description: |-
+    When not set to true:
+    - Can be a stash (related to `stashChance`)
+    - DrainableComboItem get random amount of uses
+    - HandWeapon can have lower condition (40% chance)
+    - Items with head conditio nget reduced head condition (40% chance)
+    - Items with sharpness condition get reduced sharpness condition (40% chance)
+    - Bags get items inside them

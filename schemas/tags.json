@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Procedural distributions tags Schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "The tag name"
+    },
+    "description": {
+      "type": "string",
+      "description": "The description of the tag"
+    }
+  }
+}
