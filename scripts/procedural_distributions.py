@@ -22,20 +22,15 @@ lua_files = [
     # main distribution file
     LUA_DIR / "server/Items/ProceduralDistributions.lua",
 ]
-
 lua = run_files(lua_files)
 
 # access ProceduralDistributions
 proc_dist = lua.globals()['ProceduralDistributions']
-
-# for k, v in proc_dist['list'].items():
-#     print(f"Distribution: {k}, Items: {len(v['items']) if 'items' in v else 'N/A'}")
-
-
-
 procedural_distributions = proc_dist['list']
 
-def parse_odd_pair(items):
+
+
+def parse_odd_pair_table(items):
     """
     Parse Lua tables with the following structure:
     ```lua
@@ -46,10 +41,6 @@ def parse_odd_pair(items):
     }
     ```
     """
-
-    if items is None:
-        return []
-
     d = []
     for i in range(1, len(items), 2):
         item: str = items[i]
@@ -73,8 +64,12 @@ def parse_item_picker_container(data):
             # should handle as an ItemPickerContainer ?
             if "ItemPickerContainer" in property and property["ItemPickerContainer"]:
                 o[property_name] = parse_item_picker_container(data[property_name])
+
+            # parse odd pair table
             elif property_name == "items":
-                o[property_name] = parse_odd_pair(data[property_name])
+                o[property_name] = parse_odd_pair_table(data[property_name])
+
+            # otherwise just copy the value
             else:
                 o[property_name] = data[property_name]
     return o
@@ -84,7 +79,6 @@ def parse_procedural_distributions(lua_table):
     out = {}
     for procedural_distribution, data in lua_table.items():
         out[procedural_distribution] = parse_item_picker_container(data)
-
     return out
 
 
