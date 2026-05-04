@@ -17,7 +17,16 @@ with open(PROPERTIES_DATA) as f:
 lua_files = [
     # requirements
     LUA_DIR / "server/Items/Distribution_BagsAndContainers.lua",
+    LUA_DIR / "server/Items/Distribution_BinJunk.lua",
+    LUA_DIR / "server/Items/Distribution_ClosetJunk.lua",
+    LUA_DIR / "server/Items/Distribution_CounterJunk.lua",
+    LUA_DIR / "server/Items/Distribution_DeskJunk.lua",
+    LUA_DIR / "server/Items/Distribution_ShelfJunk.lua",
+    LUA_DIR / "server/Items/Distribution_SideTableJunk.lua",
+    
     LUA_DIR / "server/Vehicles/VehicleDistribution_SeatJunk.lua",
+    LUA_DIR / "server/Vehicles/VehicleDistribution_GloveBoxJunk.lua",
+    LUA_DIR / "server/Vehicles/VehicleDistribution_TrunkJunk.lua",
 
     # main distribution file
     LUA_DIR / "server/Items/ProceduralDistributions.lua",
