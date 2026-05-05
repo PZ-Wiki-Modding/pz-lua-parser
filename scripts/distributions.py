@@ -3,9 +3,10 @@ from pathlib import Path
 # from lupa import 
 
 from execute_lua import run_files
+from find_game_path import get_lua_directory
 
 
-LUA_DIR = Path("/home/simon/.steam/debian-installation/steamapps/common/ProjectZomboid/projectzomboid/media/lua")
+LUA_DIR = get_lua_directory()
 OUT = Path("out/distributions.json")
 OUT_ROOMS = Path("out/rooms.json")
 

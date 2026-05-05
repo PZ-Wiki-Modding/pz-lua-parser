@@ -2,9 +2,10 @@ import json, yaml
 from pathlib import Path
 
 from execute_lua import run_files
+from find_game_path import get_lua_directory
 
 
-LUA_DIR = Path("/home/simon/.steam/debian-installation/steamapps/common/ProjectZomboid/projectzomboid/media/lua")
+LUA_DIR = get_lua_directory()
 OUT = Path("out/procedural_distributions.json")
 
 PROPERTIES_DATA = Path("data/procedural_distributions_properties.yaml")
