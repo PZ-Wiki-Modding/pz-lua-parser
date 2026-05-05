@@ -7,7 +7,7 @@ from execute_lua import run_files
 LUA_DIR = Path("/home/simon/.steam/debian-installation/steamapps/common/ProjectZomboid/projectzomboid/media/lua")
 OUT = Path("out/procedural_distributions.json")
 
-PROPERTIES_DATA = Path("data/procedural_distributions/properties.yaml")
+PROPERTIES_DATA = Path("data/procedural_distributions_properties.yaml")
 with open(PROPERTIES_DATA) as f:
     PROPERTIES = yaml.safe_load(f)
 
