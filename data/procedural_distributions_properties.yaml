@@ -1,3 +1,4 @@
+# those are the parameters which get parsed in the ItemPickerJava.java class
 - name: noAutoAge
 - name: fillRand
 - name: maxMap

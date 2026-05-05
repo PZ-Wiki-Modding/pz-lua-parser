@@ -1,0 +1,42 @@
+# those are the parameters which get parsed in the ItemPickerJava.java class
+# some are unused and are marked as such with isUseless: true
+- name: isShop
+  type: boolean
+- name: professionChance
+  isUseless: true
+- name: outfit
+  description: Dead bodies that spawn naturally in the room will have a chance to spawn with the outfit defined here.
+
+# all the following parameters are either not used or used in a function that literally is never used nor in the Java nor the Lua
+- name: outfitFemale
+  isUseless: true
+- name: outfitMale
+  isUseless: true
+- name: outfitChance
+  isUseless: true
+- name: vehicle
+  isUseless: true
+- name: vehicles
+  isUseless: true
+- name: vehicleChance
+  isUseless: true
+- name: vehicleDistribution
+  isUseless: true
+- name: vehicleSkin
+  isUseless: true
+- name: femaleChance
+  isUseless: true
+- name: roomTypes
+  isUseless: true
+- name: zoneRequires
+  isUseless: true
+- name: zoneDisallows
+  isUseless: true
+- name: containerChance
+  isUseless: true
+- name: femaleOdds
+  isUseless: true
+- name: bagType
+  isUseless: true
+- name: bagTable
+  isUseless: true
