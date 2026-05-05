@@ -1,0 +1,42 @@
+# for a distribution entry of a room, like:
+# room_name = {          <-- ItemPickerJava.ItemPickerRoom
+#   container_name = {   <-- ItemPickerJava.ItemPickerContainer
+#     procedural = true, <-- when present, parsed with ExtractProcList
+#     procList = {
+#       {name=..., min=0, max=1, weightChance=...},
+#       ...
+#     }
+#   }
+# }
+# 
+# The following properties correspond to the table entries of procList
+
+- name: name
+  description: The procedural distribution entry name.
+- name: min
+  description: A minimum value of 1 will force this entry to spawn.
+- name: max
+  description: The maximum number of times this procedural distribution entry can spawn.
+- name: weightChance
+- name: forceForItems
+  description: If the container's room has one of those tiles, this procedural distribution entry will be forced to spawn.
+  type:
+    main: array
+    separator: ;
+- name: forceForTiles
+  description: If the square of the container has one of those tiles, this procedural distribution entry will be forced to spawn.
+  type:
+    main: array
+    separator: ;
+- name: forceForRooms
+  description: If the building of the container has one of those rooms, this procedural distribution entry will be forced to spawn.
+  type:
+    main: array
+    separator: ;
+
+# that one is weird, because if it ever reaches the code that uses it, it should just error out
+- name: forceForZones
+  isUseless: true
+  type:
+    main: array
+    separator: ;

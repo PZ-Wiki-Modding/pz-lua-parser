@@ -1,3 +1,16 @@
+# I believe those properties are straight up useless anyway
+# because they aren't used for rooms, they are used for profession rooms (which aren't actually used)
+# 
+# basically isUseless applies to all the parameters in reality
+# isShop, professionChance and outfit are technically used in functions that would involve them
+# but in practice it seems that not a single vanilla room even uses these properties
+#
+# the only place where one of those is used, is for outfit with profession 
+# entries inside distributionTable of Distributions.lua
+# and I'm pretty sure those entries are unused
+
+
+
 # those are the parameters which get parsed in the ItemPickerJava.java class
 # some are unused and are marked as such with isUseless: true
 - name: isShop
