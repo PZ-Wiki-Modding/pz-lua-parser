@@ -8,9 +8,14 @@ LUA_DIR = Path("/home/simon/.steam/debian-installation/steamapps/common/ProjectZ
 OUT = Path("out/distributions.json")
 OUT_ROOMS = Path("out/rooms.json")
 
-PROPERTIES_DATA = Path("data/distributions_properties.yaml")
+PROPERTIES_DATA = Path("data/distributions_room_properties.yaml")
 with open(PROPERTIES_DATA) as f:
     PROPERTIES = yaml.safe_load(f)
+    PROPERTIES = {
+        k: v for k, v in PROPERTIES.items() if not v.get('isUseless', False)
+    }
+
+print(PROPERTIES)
 
 # load files in dependency order
 lua_files = [
