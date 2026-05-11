@@ -5,7 +5,6 @@ Supports Windows, Linux, and macOS with various Steam configurations.
 
 import os
 from pathlib import Path
-from typing import Optional
 
 def get_game_directory() -> Path:
     """
