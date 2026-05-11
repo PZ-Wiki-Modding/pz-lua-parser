@@ -22,19 +22,26 @@ def get_game_directory() -> Path:
             "PZ_GAME_PATH environment variable is not set. "
             "Please set the environment variable to path to the folder which contains the media directory."
         )
-    if not Path(pz_path_env).is_dir():
+    pz_path_env = Path(pz_path_env).expanduser()
+    if not pz_path_env.is_dir():
         raise FileNotFoundError(
             f"PZ_GAME_PATH environment variable is set to '{pz_path_env}', but it is not a valid directory."
         )
-    if not (Path(pz_path_env) / "media").is_dir():
+    
+    # check if is the Linux version of the game directory, if so go down in the "projectzomboid" folder
+    if (pz_path_env / "projectzomboid.sh").is_file():
+        pz_path_env = pz_path_env / "projectzomboid"
+    
+    # find media dir
+    if not (pz_path_env / "media").is_dir():
         raise FileNotFoundError(
             f"PZ_GAME_PATH environment variable is set to '{pz_path_env}', but it does not contain a 'media' directory."
         )
-    if not (Path(pz_path_env) / "media" / "lua").is_dir():
+    if not (pz_path_env / "media" / "lua").is_dir():
         raise FileNotFoundError(
             f"PZ_GAME_PATH environment variable is set to '{pz_path_env}', but it does not contain a 'media/lua' directory."
         )
-    return Path(pz_path_env)
+    return pz_path_env
 
 
 def get_lua_directory() -> Path:
