@@ -2,8 +2,8 @@ import json, yaml, lupa
 from pathlib import Path
 # from lupa import 
 
-from execute_lua import run_files
-from find_game_path import get_lua_directory
+from util.execute_lua import run_files
+from util.find_game_path import get_lua_directory
 
 
 LUA_DIR = get_lua_directory()
@@ -77,7 +77,6 @@ for room_name, room_data in distrib_table.items():
                 t = prop.get('type', {})
                 if t.get('main', None) == 'array':
                     item[prop['name']] = val.split(t.get('separator', ';'))
-            print(item)
 
         rooms_distribution[room_name][container_name] = procList
 
